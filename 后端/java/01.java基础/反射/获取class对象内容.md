@@ -25,8 +25,7 @@
 | 1| Method\<T>  getMethod(String name,Class<?>... parameterTypes)|根据`可变参数`获取方法名为`name`获取public的方法|
 | 2| Method[]\<T>  getMethods()|获取所有public的方法|
 | 3| Method\<T>  getDeclaredMethod(String name,Class<?>... parameterTypes)|根据`可变参数`获取方法名为`name`获取的方法|
-| 4| Method[]\<T>  getDeclaredMethods()|获取所有的方法|
-获取Classc对应类所包含的属性（成员变量）  
+| 4| Method[]\<T>  getDeclaredMethods()|获取所有的方法| 
 
 |序号|方法|说明|
 |--|--|--|
