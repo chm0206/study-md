@@ -22,6 +22,7 @@ git config --global user.email "email@example.com"
 **四、生成公钥(ssh key)**  
 切换到~/.ssh目录  
 `ssh-keygen`  
+`ssh-keygen -C 'you email address@gmail.com' -t rsa`
 **五、将公钥添加到git**  
 `cat  ~/.ssh/id_rsa.pub`  
 打开[公钥添加页面](https://github.com/settings/keys)  
