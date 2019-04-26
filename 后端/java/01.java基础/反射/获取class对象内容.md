@@ -1,4 +1,4 @@
-#获取Class对象  
+# 获取Class对象  
 
  - 使用Class类的forName(String clazzName)静态方法。例如，Person.class将会返回Person类对应的Class对象。
  - 调用某个类的class属性来获取该类对应的Class对象。例如，Person.class将会返回Person类对应的Class对象。
@@ -8,8 +8,8 @@
  - 代码更安全。程序在编译阶段就可以检查需要访问的Class对象是否存在。
  - 程序性能更好。因为这种方式无须调用方法，所以性能更好。  
  也就是说，能使用第二种方式，就不使用第一种方法。  
-四、从Class中获取信息  
-获取Classc对应类所包含的构造器    
+# 从Class中获取信息  
+## 获取Class对应类所包含的构造器    
 
 |序号|方法|说明|
 |--|--|--|
@@ -18,7 +18,7 @@
 | 3| Constructor\<T>  getDeclaredConstructor(Class<?>... parameterTypes)|获取指定的构造器|
 | 4| Constructor[]\<T>  getDeclaredConstructors()|获取全部的构造器|
 
-获取Classc对应类所包含的方法  
+## 获取Class对应类所包含的方法  
 
 |序号|方法|说明|
 |--|--|--|
@@ -27,13 +27,16 @@
 | 3| Method\<T>  getDeclaredMethod(String name,Class<?>... parameterTypes)|根据`可变参数`获取方法名为`name`获取的方法|
 | 4| Method[]\<T>  getDeclaredMethods()|获取所有的方法| 
 
+## 获取Class对应类所包含的成员变量
+
 |序号|方法|说明|
 |--|--|--|
 | 1| Field\<T>  getField(String name)|根据name获取public的成员变量|
 | 2| Field[]\<T>  getFields()|获取所有public的成员变量|
 | 3| Field\<T>  getDeclaredField(String name)|根据name获取的成员变量|
 | 4| Field[]\<T>  getDeclaredFields()|获取所有的成员变量|
-获取Classc对应类所包含的注解  
+
+## 获取Classc对应类所包含的注解  
 
 |序号|方法|说明|
 |--|--|--|
@@ -44,8 +47,7 @@
 | 5| \<A extends Annotation> A[]\<T>  getAnnotationsByType(Class<A> annotationClass)|与getAnnotation相似，用于重复注解|
 | 6| \<A extends Annotation> A[]\<T>  getDeclaredAnnotationsByType(Class<A> annotationClass)|与getAnnotation相似，用于重复注解|
 
-
-获取Classc对应类所包含的类  
+## 获取Classc对应类所包含的类  
 
 |序号|方法|说明|
 |--|--|--|
@@ -54,7 +56,7 @@
 | 3| Class\<? super T>  getSuperclass()|获取超类（父类）|
 | 4| Class\<?>[] getInterfaces()|获取该类实现的全部接口|
 
-获取Classc对应类的基础信息  
+## 获取Classc对应类的基础信息  
 
 |序号|方法|说明|
 |--|--|--|

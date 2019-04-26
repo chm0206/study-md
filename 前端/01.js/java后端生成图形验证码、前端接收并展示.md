@@ -1,4 +1,5 @@
-##1 工具类  
+# java后端生成图片验证码，前端接收并展示
+## 一、工具类  
 
 ```java
 import java.awt.Color;
@@ -299,7 +300,7 @@ import javax.imageio.ImageIO;
 }
 
 ```
-##二、 controller  
+## 二、 controller  
 
 ```java
 	@GetMapping(value="/imgs")
@@ -323,7 +324,7 @@ import javax.imageio.ImageIO;
         VerifyCodeUtils.outputImage(w, h, out, verifyCode);
     }
 ```
-##三、前端代码  
+## 三、前端代码  
 
 ```html
 <%@page language="java" contentType="text/html; charset=UTF-8"

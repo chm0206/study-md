@@ -1,4 +1,4 @@
-##一、表结构  
+## 一、表结构  
 
 ```
 CREATE TABLE `my_tree` (
@@ -11,7 +11,7 @@ CREATE TABLE `my_tree` (
 COLLATE='utf8_general_ci'
 ENGINE=InnoDB;
 ```
-##二、构建数据  
+## 二、构建数据  
 
 ```
 INSERT INTO `my_tree` VALUES ('1', '1', '0', '1');
@@ -22,7 +22,7 @@ INSERT INTO `my_tree` VALUES ('5', '5', '4', '3');
 INSERT INTO `my_tree` VALUES ('6', '6', '2', '3');
 INSERT INTO `my_tree` VALUES ('7', '7', '3', '2');
 ```
-##三、实体  
+## 三、实体  
 
 ```
 @Table(name = "my_tree")
@@ -44,7 +44,7 @@ public class MyTree implements Serializable {
 //忽略setter、getter方法，使用lombok可以生成setter、getter
 }
 ```
-##四、mapper配置  
+## 四、mapper配置  
 **注意collection里的配置：javaType、 column、select**  
 ```
 <?xml version="1.0" encoding="UTF-8"?>
@@ -74,7 +74,7 @@ public class MyTree implements Serializable {
   </select>
 </mapper>
 ```
-##五、DAO层  
+## 五、DAO层  
 
 ```
 

@@ -1,4 +1,4 @@
-##一、引入mybatis plus  
+## 一、引入mybatis plus  
 参考地址：https://mp.baomidou.com/guide/  
 
   **注：最好将原有mybatis注释**  
@@ -14,7 +14,7 @@
      <version>1.3.2</version>
  </dependency>-->
 ```
-##二、创建model层  
+## 二、创建model层  
 
 ```java
 
@@ -81,7 +81,7 @@ public class DeletedHandler implements MetaObjectHandler {
     }
 }
 ```
-##三、配置mapper及xml  
+## 三、配置mapper及xml  
 *Mapper.xml接口继承BaseMapper<T>接口，该接口提供了crud方法  
 
 ```java
@@ -141,7 +141,7 @@ mybatis-plus: #mybatis
   mapper-locations: classpath*:/mapper/*Mapper.xml		#xml文件扫描位置
   type-aliases-package: ac.cn.chm.mall.model			#实体类包名
 ```
-##四、service层  
+## 四、service层  
 service继承IService，该接口提供了基础的crud  
 ```java
 import ac.cn.chm.mall.model.User;
@@ -190,7 +190,7 @@ public class MybatisPlusConfig {
     }
 }
 ```
-##五、控制层  
+## 五、控制层  
 
 ```java
 @RestController

@@ -1,4 +1,4 @@
-#java8新增的方法参数反射 
+# java8新增的方法参数反射 
 
 &emsp;&emsp;Java8在java.lang.reflect包下新增了一个Executable抽象基类，该对象代表可执行的类成员，该类派生了Constructor、Method两个子类。  
 &emsp;&emsp;Executable基类提供了大师方法来获取修饰该方法或构造器的注解信息；还提供了isVarArgs()方法用于判断该方法或构造器是否包含数量可变的形参，以及通过getModifiers()方法来获取该方法或构造器的修饰符。除此之外，Executable提供了如下两个方法来获取该方法或参数的形参个数及形参名。  

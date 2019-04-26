@@ -1,7 +1,8 @@
+# Spring MVC接收复杂数据类型
 **前言：**  
 Spring MVC在接收集合请求参数时，需要在Controller方法的集合参数里前添加@RequestBody，而@RequestBody默认接收的enctype (MIME编码)是application/json，因此发送POST请求时需要设置请求报文头信息，否则Spring MVC在解析集合请求参数时不会自动的转换成JSON数据再解析成相应的集合。以下列举接收List<String>、List<User>、List<Map<String,Object>>、User[]、User(bean里面包含List)几种较为复杂的集合参数示例：  
 
- ##1. 接收List<String>集合参数：  
+ ## 1. 接收List<String>集合参数：  
 js代码  
 
 ```java
@@ -38,7 +39,7 @@ public class CatalogController {
 }  
 ```
 
- ##2. 接收List<User>、User[]集合参数：  
+ ## 2. 接收List<User>、User[]集合参数：  
  实体类  
  js代码：  
 
@@ -76,7 +77,7 @@ public class CatalogController {
 }  
 ```
 
- ##3. 接收List<Map<String,Object>>集合参数  
+ ## 3. 接收List<Map<String,Object>>集合参数  
 
  页面js代码  
 
@@ -114,7 +115,7 @@ public class CatalogController {
 }  
 ```
 
- ##4. 接收User(bean里面包含List)集合参数  
+ ## 4. 接收User(bean里面包含List)集合参数  
  js页面  
 
 
