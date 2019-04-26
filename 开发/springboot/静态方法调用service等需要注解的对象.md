@@ -1,3 +1,4 @@
+# 静态方法调用service等需要注解的对象.md
 ## 一、使用注解申明spring的组件
 &emsp;&emsp;可以使用`@Component`或`@Controller`  
 ![](https://img-blog.csdnimg.cn/20181206184919826.png)
