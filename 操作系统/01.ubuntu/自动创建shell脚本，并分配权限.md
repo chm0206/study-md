@@ -1,12 +1,12 @@
-1. 创建生成脚本touch.sh   
+##1. 创建生成脚本touch.sh   
  `sudo touch touch.sh`  
 ![在这里插入图片描述](https://img-blog.csdnimg.cn/20190308102851311.png)  
 
-2. 为脚本touch.sh分配权限  
+##2. 为脚本touch.sh分配权限  
 `sudo chmod +x touch.sh`  
 ![在这里插入图片描述](https://img-blog.csdnimg.cn/20190308102958764.png)  
 
-3. 添加内容  
+##3. 添加内容  
 `sudo vi  touch.sh`  
 ![在这里插入图片描述](https://img-blog.csdnimg.cn/20190308103031567.png)  
 ```js
@@ -36,9 +36,9 @@ do
 done
 ```
 ![在这里插入图片描述](https://img-blog.csdnimg.cn/20190308103145313.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzI1NTk4NDUz,size_16,color_FFFFFF,t_70)  
-按esc，再按:,输入wq,回车保存touch.sh脚本  
+**保存：**按`esc`，再按`:`,输入`wq`,`回车`保存touch.sh脚本  
 ![在这里插入图片描述](https://img-blog.csdnimg.cn/2019030810324725.png)  
-5. 执行脚本  
+##4. 执行脚本  
 添加一个脚本`sudo ./touch.sh first.sh`  
 添加多个脚本`sudo ./touch.sh first.sh second.sh `  
 ![在这里插入图片描述](https://img-blog.csdnimg.cn/20190308103359928.png)  

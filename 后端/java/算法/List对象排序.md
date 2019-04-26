@@ -1,4 +1,4 @@
-1、对象继承Comparable接口，并重写compareTo方法
+##1. 对象继承Comparable接口，并重写compareTo方法
 
 ```java
 public class Human implements Comparable<Human> {
@@ -42,7 +42,7 @@ public class Human implements Comparable<Human> {
 	}
 }
 ```
-二、使用Collections.sort(不去重进行排序);
+##2. 使用Collections.sort(不去重进行排序);
 
 ```java
 		List<Human> list = new ArrayList<Human>();
