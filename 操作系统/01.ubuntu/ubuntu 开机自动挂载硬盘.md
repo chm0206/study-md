@@ -1,7 +1,7 @@
 # Ubuntu开机自动挂载硬盘
 ```aidl
 sudo blkid
-sudo vi /etc/fsta
+sudo vi /etc/fstab
 UUID=DA18EBFA09C1B27D           /media/chm/buckups        ntfs    defaults        0       2
 
 
