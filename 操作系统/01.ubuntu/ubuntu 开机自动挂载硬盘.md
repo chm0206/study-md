@@ -15,7 +15,8 @@
 &emsp;&emsp;在这里我选择挂载在原目录，并创建ln链接  
 &emsp;&emsp;挂载硬盘命令
 `sudo mount /dev/sdb1 /media/data`  
-创建ln链接，方便使用
+&emsp;&emsp;创建ln链接，方便使用
+`sudo ln -s /media/data ~/Downloads`:添加到用户目录的下载目录下
 
 ## 四、配置开机自动挂载
 ### 1. 查看磁盘分区的UUID
