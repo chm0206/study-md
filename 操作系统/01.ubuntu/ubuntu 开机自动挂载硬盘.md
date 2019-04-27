@@ -1,3 +1,11 @@
+# Ubuntu开机自动挂载硬盘
+```aidl
+sudo blkid
+sudo vi /etc/fsta
+UUID=DA18EBFA09C1B27D           /media/chm/buckups        ntfs    defaults        0       2
+
+
+```
 ## 一、查看硬盘信息
 
 &emsp;&emsp;打开命令行工具：快捷键`ctrl`+`alt`+`t`  
@@ -54,3 +62,4 @@ UUID=DA18EBFA09C1B27D           /media/chm/buckups        ntfs    defaults      
 - defaults:挂载选项，一般都为defaults
 - 0：该硬盘是否需要备份，0：不备份，1：备份；一般只有boot分区需要备份
 - 2: 开机时是否对文件系统进行自检 0:不自检,1：根目录设备，2:设置自检    
+&emsp;&emsp;重启电脑
