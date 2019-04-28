@@ -1,7 +1,7 @@
 ## git快照
 ![在这里插入图片描述](https://img-blog.csdnimg.cn/20190428113311947.png)  
 ### 添加到暂存区
-[什么是暂存区](https://github.com/study-md//blob/master版本管理/git/git工作区、暂存区和版本库.md)  
+[什么是暂存区](https://github.com/chm0206/study-md/blob/master/版本管理/git/git工作区、暂存区和版本库.md)  
 命令：`git add`  
 添加一个`test.java`文件到暂存区：`git add test.java`  
 ![在这里插入图片描述](https://img-blog.csdnimg.cn/20190428113355892.png)  
@@ -27,5 +27,5 @@
 使用`git add`命令将想要快照的内容`写入缓存区`， 而执行`git commit`将缓存区内容添加到仓库中。
 
 Git 为你的每一个提交都记录你的名字与电子邮箱地址，所以第一步需要配置用户名和邮箱地址。
-[配置用户名与邮箱](https://github.com/chm0206/study-md//blob/master版本管理/git安装.md)
+[配置用户名与邮箱](https://github.com/chm0206/study-md/blob/master/版本管理/git安装.md)
 `git commit -m "提交代码的备注"`
