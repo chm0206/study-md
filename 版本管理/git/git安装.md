@@ -20,6 +20,7 @@ windows需要在git-bash.exe目录下进行操作
 git config --global user.name "Your Name"
 git config --global user.email "email@example.com"
 ```
+使用`git config --list`可以查看已配置的git参数  
 ## 四、生成公钥(ssh key)  
 切换到~/.ssh目录  
 `ssh-keygen`  
