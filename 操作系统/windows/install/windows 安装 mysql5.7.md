@@ -35,6 +35,9 @@ max_connections=200
 character-set-server=utf8
 # 创建新表时将使用的默认存储引擎
 default-storage-engine=INNODB 
+
+#关闭TIMESTAMP类型的默认什么
+explicit_defaults_form_timestamp
 ```
 注：  
 &emsp;&emsp;basedir和datadir使用自己的实际路径替换。  
