@@ -16,7 +16,7 @@
 #### 配置CLASSPATH  
 &emsp;&emsp;新增系统变量:`CLASSPATH `-->` .;%JAVA_HOME%\lib;%JAVA_HOME%\lib\tools.jar` （注意最前面有一点）  
 ![](https://imgsa.baidu.com/exp/w=500/sign=6992ee3131adcbef01347e069cae2e0e/e1fe9925bc315c608d98bc1a8db1cb1349547732.jpg)  
-### 测试是否配置成功  
+### 三、测试是否配置成功  
 &emsp;&emsp;按下`win`+`r`键，输入`cmd`，`回车`启动命令行工具  
 ![在这里插入图片描述](https://img-blog.csdnimg.cn/2019042816494285.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzI1NTk4NDUz,size_16,color_FFFFFF,t_70)  
 分别输入`java -version`和`javac -version`,若显示以下信息，则表示jdk环境配置成功  
