@@ -1,19 +1,20 @@
+# Mysql5.7解压版安装 #
 参考链接：http://www.cnblogs.com/tancky/p/6391426.html
 
-# 一、MySQL的下载
+## 一、MySQL的下载
 
 
  
 1.登陆MySQL的官网下载适用于64位系统的ZIP压缩包（https://dev.mysql.com/downloads/mysql/）
  
 
-# 二、解压安装包
+## 二、解压安装包
 
  
 将下载的ZIP压缩包解压到任意文件夹。（此处为： C:\mysql5.7）
  
 
-# 三、修改配置文件
+## 三、修改配置文件
 
 将解压文件夹目录下的`my-default.ini`文件重命名为 `my.ini`。  
 用文本编辑器打开并清空其中内容。
@@ -46,7 +47,7 @@ explicit_defaults_form_timestamp
 修改完成后保存退出。  
  
 
-# 四、配置环境变量
+## 四、配置环境变量
 
 
 在Path环境变量里添加`C:\mysql5.7\bin`（此处以实际的bin目录的路径进行替换）   
@@ -54,7 +55,7 @@ explicit_defaults_form_timestamp
  
  
 
-# 五、安装MySQL服务
+## 五、安装MySQL服务
 
 
 以管理员身份运行cmd窗口。  
@@ -66,7 +67,7 @@ explicit_defaults_form_timestamp
 4. `mysqld -remove (服务名)`移除mysql服务（需要时执行）
 
 
-# 六、修改root用户的密码
+## 六、修改root用户的密码
 
 在进行完以上五步之后运行   `mysql -u root -p`   ,  由于root用户默认是没有密码的，直接回车进入。  
 提示错误：  ERROR 1045 (28000): Access denied for user'root'@'localhost'(using password: NO)  
@@ -84,7 +85,7 @@ explicit_defaults_form_timestamp
 
 **将配置文件my.ini中的 skip_grant_tables  删除或者注释掉**  
  
-# 七、初次登陆的一些设定
+## 七、初次登陆的一些设定
 
  
 在第一次登陆到MySQL还不能直接使用，需要再重设一次密码，否则会出错误提示  
@@ -101,81 +102,112 @@ ERROR 1820 (HY000) : You must SET PASSWORD before executing this statement
  
 若是需要远程连接，则需再进行设置   
 SQL语句如下：  
-> use mysql;
-> show tables;
-> select host,user from user;
-> update user set host='%' where user='root';
-> net stop mysql
-> net start mysql
+> use mysql;  
+> show tables;  
+> select host,user from user;  
+> update user set host='%' where user='root';  
+> net stop mysql  
+> net start mysql  
 
 
  
 注：
 host列指定了允许用户登录所使用的IP，%是通配符，设置为%则代表任意IP都可以访问root
 
-# 八、 创建用户及分配权限
+## 八、 mysql精简绿化
+&emsp;&emsp;我们保留文件夹`bin`、`data`和`share`，其余的`文件夹`可以删除  
+![](https://images0.cnblogs.com/blog/372875/201309/17211333-89cef97516854a3088ba2ea66a82a51e.png)  
+&emsp;&emsp;最后文件目录大概如下：  
+![](https://images0.cnblogs.com/blog/372875/201309/17212554-bf87b6876aca4156a2b893be424213ff.png)  
+创建一个新的`mysql.bat`文件，可以通过`mysql.txt`文件修改后缀来创建
+```bat
+tasklist | find /i "mysqld.exe"
+if %errorlevel%==0 (exit) else goto stm
+:stm
+start /min "" "./mysql/bin/mysqld.exe" --defaults-file=./mysql/my.ini
+```
+
+
+&emsp;&emsp;不过这个命令必须cd到mysql文件夹所在目录进行，或者是将上面的语句保存为*.bat(也要放到mysql同级目录下/或是修改`defaults-file的目录`)   
+![](https://images0.cnblogs.com/blog/372875/201309/17213337-7fa087c3638b476e8c3f609978e0df7f.png)  
+
+&emsp;&emsp;测试代码
+```bat
+set mysql="./mysql/"
+tasklist | find /i "mysqld.exe"
+if %errorlevel%==0 (exit) else goto stm
+:stm
+start /min "" "%mysql%bin/mysqld.exe" --defaults-file=%mysql%my.ini
+```
+&emsp;&emsp;修改变量`mysql`即可（如：`set mysql="./mysql/"`-->`set mysql="./mysql1111/"`）  
+
+&emsp;&emsp;双击`mysql.bat`即可启动  
+
+## 九、 创建用户及分配权限
 
 http://www.jb51.net/article/31850.htm
 
-## 1. 创建用户:
+### 1. 创建用户:
 
-```
-CREATE USER 'username'@'host' IDENTIFIED BY 'password'; 
-```
+
+> CREATE USER 'username'@'host' IDENTIFIED BY 'password'; 
 
 说明:username - 你将创建的用户名, host - 指定该用户在哪个主机上可以登陆,如果是本地用户可用localhost, 如果想让该用户可以从任意远程主机登陆,可以使用通配符%. password - 该用户的登陆密码,密码可以为空,如果为空则该用户可以不需要密码登陆服务器.   
 
 例子:   
-CREATE USER 'dog'@'localhost' IDENTIFIED BY '123456';   
-CREATE USER 'pig'@'192.168.1.101_' IDENDIFIED BY '123456';   
-CREATE USER 'pig'@'%' IDENTIFIED BY '123456';   
-CREATE USER 'pig'@'%' IDENTIFIED BY '';   
-CREATE USER 'pig'@'%';   
+> CREATE USER 'dog'@'localhost' IDENTIFIED BY '123456';   
 
-## 2. 授权: 
+>  CREATE USER 'pig'@'192.168.1.101_' IDENDIFIED BY '123456';   
 
-```
-GRANT privileges ON databasename.tablename TO 'username'@'host'
-```
+>  CREATE USER 'pig'@'%' IDENTIFIED BY '123456';   
 
-```
-GRANT ALL ON *.* TO 'pig'@'%'; 
-```
+>  CREATE USER 'pig'@'%' IDENTIFIED BY '';   
+
+>  CREATE USER 'pig'@'%';   
+
+### 2. 授权: 
+
+> GRANT privileges ON databasename.tablename TO 'username'@'host'
+
+> GRANT ALL ON *.* TO 'pig'@'%'; 
 
  
 
 说明: privileges - 用户的操作权限,如SELECT , INSERT , UPDATE 等(详细列表见该文最后面).如果要授予所的权限则使用ALL.;databasename - 数据库名,tablename-表名,如果要授予该用户对所有数据库和表的相应操作权限则可用*表示, 如*.*.   
 
-例子: GRANT SELECT, INSERT ON test.user TO 'pig'@'%';   
-GRANT ALL ON *.* TO 'pig'@'%';   
+例子: 
+> GRANT SELECT, INSERT ON test.user TO 'pig'@'%';   
+  GRANT ALL ON *.* TO 'pig'@'%';   
 
 注意:用以上命令授权的用户不能给其它用户授权,如果想让该用户可以授权,用以下命令:   
 GRANT privileges ON databasename.tablename TO 'username'@'host' WITH GRANT OPTION;   
 
-## 3. 设置与更改用户密码 
+### 3. 设置与更改用户密码 
 
 
-`SET PASSWORD FOR 'username'@'host' = PASSWORD('newpassword')`;
+`SET PASSWORD FOR 'username'@'host' = PASSWORD('newpassword');`
 
 ```SET PASSWORD = PASSWORD("newpassword"); ```如果是当前登陆用户  
 
-例子: SET PASSWORD FOR 'pig'@'%' = PASSWORD("123456");   
+例子: 
+> SET PASSWORD FOR 'pig'@'%' = PASSWORD("123456");   
 
-## 4. 撤销用户权限 
+### 4. 撤销用户权限 
 
-```
-REVOKE privilege ON databasename.tablename FROM 'username'@'host'; 
-```
+> REVOKE privilege ON databasename.tablename FROM 'username'@'host'; 
 
-说明: privilege, databasename, tablename - 同授权部分. 
+说明: `privilege`, `databasename`, `tablename` - 同授权部分. 
 
-例子: REVOKE SELECT ON *.* FROM 'pig'@'%'; 
+例子: 
+> REVOKE SELECT ON *.* FROM 'pig'@'%'; 
 
-注意: 假如你在给用户'pig'@'%'授权的时候是这样的(或类似的):GRANT SELECT ON test.user TO 'pig'@'%', 则在使用REVOKE SELECT ON *.* FROM 'pig'@'%';命令并不能撤销该用户对test数据库中user表的SELECT 操作.相反,如果授权使用的是GRANT SELECT ON *.* TO 'pig'@'%';则REVOKE SELECT ON test.user FROM 'pig'@'%';命令也不能撤销该用户对test数据库中user表的Select 权限. 
+**注意**:   
+&emsp;&emsp;假如你在给用户'pig'@'%'授权的时候是这样的(或类似的):`GRANT SELECT ON test.user TO 'pig'@'%'`，则在使用`REVOKE SELECT ON *.* FROM 'pig'@'%';`命令并不能撤销该用户对test数据库中user表的SELECT 操作；  
+&emsp;&emsp;相反,如果授权使用的是`GRANT SELECT ON *.* TO 'pig'@'%';`则`REVOKE SELECT ON test.user FROM 'pig'@'%';`命令也不能撤销该用户对test数据库中user表的Select 权限。 
 
-具体信息可以用命令SHOW GRANTS FOR 'pig'@'%'; 查看. 
+&emsp;&emsp;具体信息可以用命令`SHOW GRANTS FOR 'pig'@'%';` 查看。
 
-## 5. 删除用户 
+### 5. 删除用户 
 
 ```
 DROP USER 'username'@'host'; 
