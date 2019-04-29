@@ -4,6 +4,8 @@
 解压到指定的目录下，如：`G:\a_workIndex\jdk`   
 ![在这里插入图片描述](https://img-blog.csdnimg.cn/20190428164012670.png)  
 ### 二、配置环境变量  
+[自动配置环境变量，用于环境变量关机消失的机器]()  
+手动配置环境变量
 计算机(右键)→属性→高级系统设置→高级→环境变量  
 ![](https://imgsa.baidu.com/exp/w=500/sign=b201ea16d539b6004dce0fb7d9523526/55e736d12f2eb9383c9f9307d5628535e4dd6f51.jpg)  
 #### 配置JAVA_HOME

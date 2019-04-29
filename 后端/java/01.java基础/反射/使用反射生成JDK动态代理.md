@@ -72,3 +72,4 @@ class MyInvokationHandler implements InvocationHandler{
 }
 
 ```
+上面demo程序首先提供了一个Person接口，该接口包含了walk()和sayHello()两个抽象方法，接着定义了一个简单的InvocationHandler实现类，定义该实现类时需要重写invoke()方法————调用代理对象的所有

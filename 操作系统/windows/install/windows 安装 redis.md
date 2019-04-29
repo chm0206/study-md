@@ -1,4 +1,4 @@
-## 一、下载
+## 一、下载并解压到工作目录下
 redis官方下载地址：`https://redis.io/download`  
 redis 64位下载地址：`https://github.com/ServiceStack/redis-windows`  
 本人测试使用的是redis-64.3.0.503版本。  
@@ -19,7 +19,21 @@ requirepass password
 
 > redis-server.exe redis.windows.conf
 
-![这里写图片描述](https://img-blog.csdn.net/20180902210740872?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzI1NTk4NDUz/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70)
+![这里写图片描述](https://img-blog.csdn.net/20180902210740872?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzI1NTk4NDUz/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70)  
+### 后台启动(不显示redis窗口)
+&emsp;&emsp;实现方法是利用vbe脚本去运行一个bat脚本  
+bat脚本内容:`redis-start.bat`  
+```bat
+ @echo off
+ G:
+ cd G:\a_workIndex\Redis-x64-3.2.100
+ redis-server.exe redis.windows.conf
+```
+vbe脚本:`redis.vbe`  
+```vbe
+set ws = wscript.createrobject("wscript.shell")
+ws.run "redis-start.bat /start",0
+```
 ## 四、将redis添加到服务中
 &emsp;&emsp;在redis目录下执行命令（添加到服务后不需要手动启动redis）  
 
