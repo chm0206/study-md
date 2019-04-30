@@ -148,7 +148,7 @@ if (go != null) {
     Instantiate(go);
 }
 ```
-[kk](../前端/01.js/01.js类型转换.md)
+
 ### 通过服务器加载资源代码
 ```csharp
 private AssetBundleManifest MainManifest = null;
