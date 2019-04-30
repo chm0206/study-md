@@ -6,7 +6,7 @@
 添加一个`test.java`文件到暂存区：`git add test.java`  
 ![在这里插入图片描述](https://img-blog.csdnimg.cn/20190428113355892.png)  
 ![在这里插入图片描述](https://img-blog.csdnimg.cn/20190428113423974.png)  
-添加多个文件或目录到暂存区：`git add test1.java src/ *.yml`：添加test1.java文件、src目录及后缀为.yml的文件到暂存区  
+添加多个文件或目录到暂存区：`git add test1.java src/ *.yml`：添加`test1.java`文件、`src`目录及后缀为`.yml`的文件到暂存区  
 ![在这里插入图片描述](https://img-blog.csdnimg.cn/20190428113528799.png)  
 ### 查看状态
 命令：
