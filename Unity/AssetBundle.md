@@ -1,22 +1,19 @@
-<center><font face="微软雅黑" size=50>AssetBundle</font></center>
-
 <!-- TOC -->
 
-- [0.1. 常用函数](#01-常用函数)
-    - [0.1.1. BuildAssetBundleOptions](#011-buildassetbundleoptions)
-- [0.2. 打包执行代码](#02-打包执行代码)
-- [0.3. 设置资源包名](#03-设置资源包名)
-- [0.4. 加载资源](#04-加载资源)
-    - [0.4.1. 加载代码](#041-加载代码)
-    - [0.4.2. 测试代码](#042-测试代码)
-    - [0.4.3. 通过服务器加载资源代码](#043-通过服务器加载资源代码)
-    - [0.4.4. 测试代码：](#044-测试代码)
+- [常用函数](#常用函数)
+    - [BuildAssetBundleOptions](#buildassetbundleoptions)
+- [打包执行代码](#打包执行代码)
+- [设置资源包名](#设置资源包名)
+- [加载资源](#加载资源)
+    - [加载代码](#加载代码)
+    - [测试代码](#测试代码)
+    - [通过服务器加载资源代码](#通过服务器加载资源代码)
+    - [测试代码：](#测试代码)
 
 <!-- /TOC -->
-
 ---
 
-## 0.1. 常用函数
+## 常用函数
 ```csharp
 string selectPath = AssetDatabase.GetAssetPath(assetPath);
 // 根据路径获取文件夹info
@@ -33,7 +30,7 @@ AssetDatabase.RemoveUnusedAssetBundleNames();
 AssetDatabase.GetAssetBundleDependencies(assetBundleName, recursive);
 ```
 
-### 0.1.1. BuildAssetBundleOptions
+### BuildAssetBundleOptions
 - **CompleteAssets**：用于保证资源的完备性，默认开启；
 - **CollectDependencies**：用于收集资源的依赖项，默认开启；
 - **DeterministicAssetBundle**：用于为资源维护固定ID，默认开启；
@@ -55,7 +52,7 @@ Unity3D引擎为我们提供了三种压缩策略来处理AssetBundle的压缩�
   - 若要使用不压缩的策略，只需要在打包的时候开启BuildAssetBundleOptions.UncompressedAssetBundle即可。
 ---
 
-## 0.2. 打包执行代码
+## 打包执行代码
 ```csharp
 [MenuItem("AssetBundle/Bundle AssetBundles")]
     static public void WindowBundle()
@@ -75,7 +72,7 @@ Unity3D引擎为我们提供了三种压缩策略来处理AssetBundle的压缩�
 
 ---
 
-## 0.3. 设置资源包名
+## 设置资源包名
 由于简化了代码，工作量就变成需要对资源进行分类设置AssetBundleName
 - 两点建议
    1. 提供脚本批量对资源设置assetbundleName
@@ -94,7 +91,7 @@ static public void SetFileAssetBundleName(string filePath, string assetBundleNam
 
 ---
 
-## 0.4. 加载资源
+## 加载资源
 - LoadAsset：从资源包中加载指定的资源
 - LoadAllAsset：加载当前资源包中所有的资源
 - LoadAssetAsync：从资源包中异步加载资源
@@ -102,7 +99,7 @@ static public void SetFileAssetBundleName(string filePath, string assetBundleNam
    - 当传入的参数为true，则不仅仅内存中的AssetBundle对象包含的资源会被销毁。根据这些资源实例化而来的游戏内的对象也会销毁。
    - 当传入的参数为false，则仅仅销毁内存中的AssetBundle对象包含的资源。
 
-### 0.4.1. 加载代码
+### 加载代码
 ```csharp
 // 存储加载过的资源
 static public Dictionary<string, AssetBundle> loadPathList = new Dictionary<string, AssetBundle>();
@@ -144,7 +141,7 @@ static public Dictionary<string, AssetBundle> loadPathList = new Dictionary<stri
     }
 ```
 
-### 0.4.2. 测试代码
+### 测试代码
 ```csharp
 GameObject go = LoadAssetBundle.LoadResource("prefabs.unity3d", "Dog");
 if (go != null) {
@@ -152,7 +149,7 @@ if (go != null) {
 }
 ```
 [kk](../前端/01.js/01.js类型转换.md)
-### 0.4.3. 通过服务器加载资源代码
+### 通过服务器加载资源代码
 ```csharp
 private AssetBundleManifest MainManifest = null;
 private AssetBundle MainAB = null;
@@ -214,7 +211,7 @@ IEnumerator LoadAssets(string assetName, string resourceName)
     }
 }
 ```
-### 0.4.4. 测试代码：
+### 测试代码：
 ```csharp
 StartCoroutine(LoadMainManifest());
 StartCoroutine(LoadAssets("prefabs.unity3d", "Role"));
