@@ -1,12 +1,12 @@
 # 使用反射生成JDK动态代理
-&emsp;&emsp;在java的java.lang.reflect包下提供了一个Proxy类和一个InvocationHandler接口，通过使用这个类和接口可以生成JDK动态代理类或动态代理对象。  
+&emsp;&emsp;在java的java.lang.reflect包下提供了一个`Proxy`类和一个`InvocationHandler`接口，通过使用这个类和接口可以生成JDK动态代理类或动态代理对象。  
 ## 1. 使用Proxy和InvocationHandler创建动态代理
-&emsp;&emsp;Proxy提供了用于创建动态代理类和代理对象的静态方法，它也是所有动态代理类的父类。如果在程序中为一个或多个接口动态地生成实现类，就可以使用Proxy来创建动态代理类；如果需要为一个或多个接口动态地创建实例，也可以使用Proxy来创建动态代理实例。  
+&emsp;&emsp;`Proxy`提供了用于创建动态代理类和代理对象的静态方法，它也是所有动态代理类的父类。如果在程序中为一个或多个接口动态地生成实现类，就可以使用Proxy来创建动态代理类；如果需要为一个或多个接口动态地创建实例，也可以使用Proxy来创建动态代理实例。  
 &emsp;&emsp;Proxy提供了如下两个方法来创建动态代理类和动态代理实例。
 - static Class<?> getProxyClass(ClassLoader loader,Class<?> .. interfaces):创建一个动态代理类所对应的Class对象，该代理类将实现interfacs所指定的多个接口。第一个ClassLoader参数指定生成动态代理类的类加载器。  
 - static Object new ProxyInstance(ClassLoader loader,Class<?>[] interfaces,InvocationHandler h):直接创建一个动态代理对象，该代理对象的实现类实现了interfaces指定的系统接口，执行代理对象的每个方法时都会被替换执行InvocationHandler对象的invoke方法。  
 
-&emsp;&emsp;实际上，即使采用第一个方法生成动态代理类之后，如果程序需要通过该代理类来创建对象，依然需要传入一个InvocationHandler对象。也就是说，系统生成的每个代理能够都有一个与之关联的InvocationHandler对象。  
+&emsp;&emsp;实际上，即使采用第一个方法生成动态代理类之后，如果程序需要通过该代理类来创建对象，依然需要传入一个`InvocationHandler`对象。也就是说，系统生成的每个代理能够都有一个与之关联的`InvocationHandler`对象。  
 &emsp;&emsp;程序中可以采用先生成一个动态代理类，然后通过动态代理类来创建代理对象的方式生成一个动态代理对象。代码片段如下：
 ```java
 //创建一个InvocationHandler对象
