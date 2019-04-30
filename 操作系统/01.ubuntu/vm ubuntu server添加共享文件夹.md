@@ -1,4 +1,4 @@
-
+从上往下执行命令
 
 `sudo apt-get install build-essential`
 

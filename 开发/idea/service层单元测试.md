@@ -1,4 +1,4 @@
-一、加入依赖  
+## 一、加入依赖  
 
 ```
 <dependency>
@@ -14,7 +14,7 @@
     <version>1.10.19</version>
 </dependency>
 ```
-二、创建单元测试  
+## 二、创建单元测试  
 
 测试类的的命名规则一般是 xxxTest.java ；  
 测试类中测试的方法可以有前缀，这个看统一标准，所以有时候会发现别人的测试方法上有test前缀；  
@@ -22,13 +22,13 @@
 
 使用 IDEA 中，选中当前类名，使用快捷键 ALT + ENTER（WIN），向下选则 Create Test 回车，即可进入生成测试类的选项中，再次回车，就快速的生成测试类。  
 ![在这里插入图片描述](https://img-blog.csdnimg.cn/20190326112051828.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzI1NTk4NDUz,size_16,color_FFFFFF,t_70)  
-三、注入服务  
+## 三、注入服务  
 
 ```java
  @Mock
  private IUserService;
 ```
-四、例子  
+## 四、例子  
 
 ```java
 import com.test.service.IUserService;
@@ -84,6 +84,6 @@ public class ProjectBaseServiceImplTest {
 
  `@BeforeClass` –> `@Before` –> `@Test` –> `@After` –> `@AfterClass`
 
-每一个测试方法的调用顺序为：
+**每一个测试方法的调用顺序**
 
 `@Before`–> `@Test `–> `@After`

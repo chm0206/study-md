@@ -1,6 +1,6 @@
-一、mybatis-plus官方文档  
+## 一、mybatis-plus官方文档  
 [mybatis-plus官方文档](https://mp.baomidou.com/guide/crud-interface.html)  
-二、spring boot 引入mybatis-plus  
+## 二、spring boot 引入mybatis-plus  
 在指定项目的pom.xml文件下添加以下代码  
 ```xml
  <!-- 引入mybatis plus -->
@@ -10,7 +10,7 @@
             <version>3.0.6</version>
         </dependency>
 ```
-三、 创建mapper并继承通用BaseMapper<Entity>  
+## 三、 创建mapper并继承通用BaseMapper<Entity>  
 
 ```java
 import ac.cn.chm.uc.testuser.model.TestUser;
@@ -19,7 +19,7 @@ import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 public interface TestUserMapper extends BaseMapper<TestUser> {
 }
 ```
-四、创建service接口，继承IService  
+## 四、创建service接口，继承IService  
 
 ```java
 import ac.cn.chm.uc.testuser.model.TestUser;
@@ -33,7 +33,7 @@ public interface IUserService extends IService<TestUser> {
     int addUser();
 }
 ```
-五、创建service实现类，实现service接口，继承ServiceImpl实现类  
+## 五、创建service实现类，实现service接口，继承ServiceImpl实现类  
 
 ```java
 import ac.cn.chm.uc.mapper.TestUserMapper;
@@ -49,11 +49,11 @@ public class UserServiceImpl extends ServiceImpl<TestUserMapper, TestUser> imple
     }
 }
 ```
-引入其他的接口  
+注解其他的接口  
 
 ```java
  	@Autowired
-    private ITestService testService;
+    private IOtherService otherService;
 ```
 至此，mybatis-plus通用mapper与通用service完成  
 

@@ -1,4 +1,4 @@
-1、在循环内
+## 1、在循环内
 
 ```java
 public class TestForLength {
@@ -47,7 +47,7 @@ public class TestForLength {
 获取数组的长度
 ```
 结论：每一次循环都会重新获取一次结束条件
-1、在循环外
+## 2、在循环外
 
 ```java
 public class TestForLength {

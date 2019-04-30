@@ -1,0 +1,6 @@
+# URLClassLoader类
+&emsp;&emsp;Java为ClassLoader提供了一个URLClassLoader实现类，该类也是系统类加载器和扩展类的父类（此处的父类，就是指类与类之间的继承关系）。URLClassLoader功能比较强大，它既可以从本地文件系统获取二进制文件来加载类，也可以从远程主机获取二进制文件来加载类。  
+&emsp;&emsp;在应用程序中可以直接使用URLClassLoader加载类，URLClassLoader类提供了如下两个构造器。  
+- URLClassLoader(URL[] urls)：使用默认的父类加载器创建一个ClassLoader对象，该对象将从urls所指定的系列路径来查询并加载类。  
+- URLClassLoader(URL[] urls,ClassLoader parent):使用指定的父类加载器创建一个ClassLoader对象，其它功能与前一个构造器相同。  
+

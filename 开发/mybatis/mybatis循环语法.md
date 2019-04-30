@@ -1,4 +1,4 @@
-1. in查询  
+## 1. in查询  
 关键词：列表`types(collection)`，foreach的key值：`type(item)`
 传入的列表集合  List<String> type
 ```xml
