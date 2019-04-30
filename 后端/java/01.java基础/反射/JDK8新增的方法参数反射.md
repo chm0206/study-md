@@ -1,14 +1,14 @@
 # java8新增的方法参数反射 
 
-&emsp;&emsp;Java8在java.lang.reflect包下新增了一个Executable抽象基类，该对象代表可执行的类成员，该类派生了Constructor、Method两个子类。  
-&emsp;&emsp;Executable基类提供了大师方法来获取修饰该方法或构造器的注解信息；还提供了isVarArgs()方法用于判断该方法或构造器是否包含数量可变的形参，以及通过getModifiers()方法来获取该方法或构造器的修饰符。除此之外，Executable提供了如下两个方法来获取该方法或参数的形参个数及形参名。  
-- int getParameterCount():获取该构造器或方法的形参个数。
-- Parameter[] getParameters():获取该构造器或方法的形参个数。 
+&emsp;&emsp;Java8在java.lang.reflect包下新增了一个`Executable`抽象基类，该对象代表可执行的类成员，该类派生了`Constructor`、`Method`两个子类。  
+&emsp;&emsp;`Executable`基类提供了大量方法来获取修饰该方法或构造器的注解信息；还提供了`isVarArgs()`方法用于判断该方法或构造器`是否包含数量可变的形参`，以及通过`getModifiers()`方法来获取该方法或构造器的`修饰符`。除此之外，Executable提供了如下两个方法来获取该方法或参数的形参个数及形参名。  
+- int getParameterCount():获取该构造器或方法的形参`个数`。
+- Parameter[] getParameters():获取该构造器或方法的`所有`形参。 
 
-&emsp;&emsp;上面第二个方法返回了一个Parameter[] 数组，Parameter也是java8新增的API，每个Parameter对象代表方法或构造器的一个参数。Parameter也提供了大量方法来获取声明该参数的泛型信息，还提供了如下常用方法来获取参数信息。  
-- getModifiers():获取修饰该形参的修饰符。
-- String getName():获取形参名。
-- Type getParameterizedType():获取带泛型的形参类型。
+&emsp;&emsp;上面第二个方法返回了一个`Parameter[]`数组，`Parameter`也是`java8`新增的API，每个`Parameter`对象代表`方法或构造器`的一个`参数`。`Parameter`也提供了大量方法来获取声明该参数的泛型信息，还提供了如下常用方法来获取参数信息。  
+- getModifiers():获取修饰该形参的`修饰符`。
+- String getName():获取`形参名`。
+- Type getParameterizedType():获取`带泛型`的形参`类型`。
 - Class<?> getType():获取形参类型。
 - boolean isNamePresent():该方法返回该类的class文件中是否包含了方法的形参名信息。
 - boolean isVarArgs():该方法用于判断该参数是否为个数可变的形参。  
@@ -17,7 +17,7 @@
 &emsp;&emsp;如果希望java命令编译Java源文件时可以保留形参信息，则需要为该命令指定-parameters选项。  
 
 **demo**  
-使用Class<?>会导致无法获取到泛型的类型  
+使用Class<?>会导致无法获取到泛型的类型(??不敢完全确定)  
 ````java
 import java.lang.reflect.Method;
 import java.lang.reflect.Parameter;
