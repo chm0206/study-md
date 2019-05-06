@@ -1,10 +1,13 @@
 # 提高SQL查询效率的30种方法
-1.对查询进行优化，应尽量避免全表扫描，首先应考虑在 where 及 order by 涉及的列上建立索引。 
+## 1. 避免全表扫描
+&emsp;&emsp;对查询进行优化，应尽量避免全表扫描，首先应考虑在 `where` 及 `order by` 涉及的列上建立索引。 
 
-2.应尽量避免在 where 子句中对字段进行 null 值判断，否则将导致引擎放弃使用索引而进行全表扫描，如： 
-select id from t where num is null 
-可以在num上设置默认值0，确保表中num列没有null值，然后这样查询： 
-select id from t where num=0 
+## 避免进行null判断
+&emsp;&emsp;在 where 子句中对字段进行 null 值判断，会导致引擎放弃使用索引而进行全表扫描；
+&emsp;&emsp;如： 
+> select id from t where num is null 
+&emsp;&emsp;可以在num上设置默认值0，确保表中num列没有null值，然后这样查询： 
+>select id from t where num=0 
 
 3.应尽量避免在 where 子句中使用!=或<>操作符，否则将引擎放弃使用索引而进行全表扫描。 
 
