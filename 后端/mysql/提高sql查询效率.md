@@ -19,19 +19,21 @@
 > select id from t where num=10 or num=20 
 
 可以这样查询：   
-> select id from t where num=10 
-> union all 
-> select id from t where num=20 
+> select id from t where num=10   
+union all    
+select id from t where num=20   
 
 ## 5. 慎用 in 与not in
 &emsp;&emsp;in 和 not in 也要慎用，否则会导致全表扫描；  
 如： 
 > select id from t where num in(1,2,3) 
+
 &emsp;&emsp;对于连续的数值，能用 `between` 就不要用 `in` ：   
 > select id from t where num between 1 and 3 
 
 ## 6. like关键字也会导致全文索引： 
 > select id from t where name like '%abc%' 
+
 &emsp;&emsp;若要提高效率，可以考虑全文检索。     
 
 ## 7. 在where子句中使用参数，也将导致全表扫描
@@ -45,11 +47,15 @@
 &emsp;&emsp;不要在 where 子句中的`=`左边进行`函数`、`算术`运算或`其他表达式`运算，否则系统将可能无法正确使用索引。
 &emsp;&emsp;表达式操作  
 > select id from t where `num/2`=100 
+
 应改为:   
 > select id from t where num=`100*2` 
+
 &emsp;&emsp;函数操作  
 > select id from t where substring(name,1,3)='abc'--name以abc开头的id 
+
 > select id from t where datediff(day,createdate,'2005-11-30')=0--‘2005-11-30’生成的id 
+
 &emsp;&emsp;应改为:   
 > select id from t where name like 'abc%' 
 > select id from t where createdate>='2005-11-30' and createdate<'2005-12-1' 
