@@ -13,7 +13,7 @@
 ## 3. 避免使用!=或<>
 在 where 子句中使用!=或<>操作符，引擎放弃使用索引而进行全表扫描。   
 
-## 4.避免使用or
+## 4. 避免使用or
 在 where 子句中使用 or 来连接条件，否则将导致引擎放弃使用索引而进行全表扫描;  
 如： 
 > select id from t where num=10 or num=20 
@@ -23,35 +23,37 @@
 > union all 
 > select id from t where num=20 
 
-## 5.慎用 in 与not in
+## 5. 慎用 in 与not in
 &emsp;&emsp;in 和 not in 也要慎用，否则会导致全表扫描；  
 如： 
 > select id from t where num in(1,2,3) 
-对于连续的数值，能用 between 就不要用 in 了：   
+&emsp;&emsp;对于连续的数值，能用 `between` 就不要用 `in` ：   
 > select id from t where num between 1 and 3 
 
-6.下面的查询也将导致全表扫描： 
-select id from t where name like '%abc%' 
-若要提高效率，可以考虑全文检索。 
+## 6. like关键字也会导致全文索引： 
+> select id from t where name like '%abc%' 
+&emsp;&emsp;若要提高效率，可以考虑全文检索。     
 
-7. 如果在 where 子句中使用参数，也会导致全表扫描。因为SQL只有在运行时才会解析局部变量，但优化程序不能将访问计划的选择推迟到运行时；它必须在编译时进行选择。然 而，如果在编译时建立访问计划，变量的值还是未知的，因而无法作为索引选择的输入项。如下面语句将进行全表扫描： 
-select id from t where num=@num 
-可以改为强制查询使用索引： 
-select id from t with(index(索引名)) where num=@num 
+## 7. 在where子句中使用参数，也将导致全表扫描
+&emsp;&emsp;如果在`where`子句中使用参数，也会导致全表扫描。因为SQL只有在`运行时`才会`解析``局部变量`，但优化程序不能将访问计划的选择推迟到运行时；它必须在编译时进行选择。然 而，如果在编译时建立访问计划，变量的值还是未知的，因而无法作为索引选择的输入项。如下面语句将进行全表扫描： 
+> select id from t where num=`@num`
+可以改为强制查询使用索引：   
+> select id from t with(`index(索引名)`) where num=@num 
 
-8.应尽量避免在 where 子句中对字段进行表达式操作，这将导致引擎放弃使用索引而进行全表扫描。如： 
-select id from t where num/2=100 
-应改为: 
-select id from t where num=100*2 
-
-9.应尽量避免在where子句中对字段进行函数操作，这将导致引擎放弃使用索引而进行全表扫描。如： 
-select id from t where substring(name,1,3)='abc'--name以abc开头的id 
-select id from t where datediff(day,createdate,'2005-11-30')=0--‘2005-11-30’生成的id 
-应改为: 
-select id from t where name like 'abc%' 
-select id from t where createdate>='2005-11-30' and createdate<'2005-12-1' 
-
-10.不要在 where 子句中的“=”左边进行函数、算术运算或其他表达式运算，否则系统将可能无法正确使用索引。 
+## 8. 避免在`where`中对字段进行`表达式`操作、`函数`操作
+&emsp;&emsp;在`where`子句中对`字段`进行`表达式`操作，这将导致引擎放弃使用索引而进行全表扫描;  
+&emsp;&emsp;不要在 where 子句中的`=`左边进行`函数`、`算术`运算或`其他表达式`运算，否则系统将可能无法正确使用索引。
+&emsp;&emsp;表达式操作  
+> select id from t where `num/2`=100 
+应改为:   
+> select id from t where num=`100*2` 
+&emsp;&emsp;函数操作  
+> select id from t where substring(name,1,3)='abc'--name以abc开头的id 
+> select id from t where datediff(day,createdate,'2005-11-30')=0--‘2005-11-30’生成的id 
+&emsp;&emsp;应改为:   
+> select id from t where name like 'abc%' 
+> select id from t where createdate>='2005-11-30' and createdate<'2005-12-1' 
+ 
 
 11.在使用索引字段作为条件时，如果该索引是复合索引，那么必须使用到该索引中的第一个字段作为条件时才能保证系统使用该索引，否则该索引将不会被使用，并且应尽可能的让字段顺序与索引顺序相一致。 
 
