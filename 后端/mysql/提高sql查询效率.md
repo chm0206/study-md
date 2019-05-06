@@ -23,10 +23,12 @@
 > union all 
 > select id from t where num=20 
 
-5.in 和 not in 也要慎用，否则会导致全表扫描，如： 
-select id from t where num in(1,2,3) 
-对于连续的数值，能用 between 就不要用 in 了： 
-select id from t where num between 1 and 3 
+## 5.慎用 in 与not in
+&emsp;&emsp;in 和 not in 也要慎用，否则会导致全表扫描；  
+如： 
+> select id from t where num in(1,2,3) 
+对于连续的数值，能用 between 就不要用 in 了：   
+> select id from t where num between 1 and 3 
 
 6.下面的查询也将导致全表扫描： 
 select id from t where name like '%abc%' 
