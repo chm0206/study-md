@@ -1,0 +1,3 @@
+- Lambda 表达式是一个匿名方法，将行为像数据一样进行传递；
+- Lambda 表达式的常见结构：`BinarOperator<Integer> (x,y) -> x+y`;
+- 函数接口指仅具有单个抽象方法的接口，用来表示Lambda表达式的类型。
