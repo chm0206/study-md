@@ -11,7 +11,7 @@
 5|git rm --cached filename|从本地仓库删除指定的文件
 4|git branch -v|查看本地库的所有分支
 5|git branch `dev`|在本地创建一个`dev`分支
-6|git `checkout` dev|切换到dev分支
+6|git `checkout` dev|切换到dev分支</br>将被删除的代码从暂存区拉回
 
 
 https://baijiahao.baidu.com/s?id=1621620608602705821&wfr=spider&for=pc
