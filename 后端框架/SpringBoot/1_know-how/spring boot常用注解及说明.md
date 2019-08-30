@@ -1,0 +1,4 @@
+- @SpringBootApplication : Spring Boot应用标注在某个类上说明这个类是SpringBoot的主配置类，SpringBoot就应该运行这个类的main方法来启动SpringBoot应用；  
+- @SpringBootConfiguration : Spring Boot的配置类，标注在某个类上，表示这是一个Spring Boot的配置类
+- @Configuration : 配置类上来标注这个注解，配置类也是容器中的一个组件@Component
+- @EnableAutoConfiguration：开启自动配置功能
