@@ -92,4 +92,14 @@ default-character-set=utf8
 ### 更新密码并刷新权限
 `set password=password('root') ;`
 `flush privileges;`
-![在这里插入图片描述](https://img-blog.csdnimg.cn/20190301235331609.png)
+![在这里插入图片描述](https://img-blog.csdnimg.cn/20190301235331609.png)  
+### 设置远程链接
+```yaml
+use mysql;
+show tables;
+select host,user from user;
+update user set host='%' where user='root';
+```
+退出数据库`quit`  
+重启数据库  
+`./support-files/mysql.server restart`，若已放到自启动服务里了，可以执行`service mysq.server restart`    
