@@ -1,6 +1,6 @@
 # centOS查看及开放端口
 |序号|命令|说明|
-|--|--|--|--|
+|---|---|---|---|
 |1|firewall-cmd --zone=public --add-port=5672/tcp --permanent|`开放`5672端口|
 |2|firewall-cmd --zone=public --remove-port=5672/tcp --permanent|`关闭`5672端口|
 |3|firewall-cmd --reload|重启配置，使配置立即生效|
